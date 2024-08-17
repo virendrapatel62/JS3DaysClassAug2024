@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div {
+        height: 100vh;
+        display: flex;
+        width: 100vw;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      h1 {
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="time">00:00:00</h1>
+    </div>
+  </body>
+
+  <script>
+    const time = document.querySelector(".time");
+
+    const format = (value) => {
+      if (value < 10) return "0" + value;
+      return value;
+    };
+
+    const updateTime = () => {
+      const date = new Date();
+      const hr = date.getHours() % 12;
+      const min = date.getMinutes();
+      const sec = date.getSeconds();
+      time.innerHTML = ` ${format(hr)}:${format(min)}:${format(sec)}`;
+    };
+
+    updateTime();
+
+    setInterval(updateTime, 1000);
+  </script>
+</html>
